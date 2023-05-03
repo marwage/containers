@@ -6,10 +6,11 @@ WORKDIR /workspace
 
 RUN apt-get update
 RUN apt-get install -y \
-    wget
+    wget \
+    iproute2
 
 RUN apt-get install -y \
-    libnvidia-compute-515 \
+    libnvidia-compute-470 \
     libbsd0 \
     libcap2 \
     libelf1 \
@@ -32,5 +33,8 @@ RUN cd /tmp && \
     dpkg -i nvidia-peer-memory_1.2-0_all.deb
     # dpkg -i nvidia-peer-memory-dkms_1.2-0_all.deb
 
+RUN ln -s /usr/bin/python3 /usr/bin/python && \
+    ln -s /usr/bin/pip3 /usr/bin/pip
 RUN apt-get install -y python3-pip
-RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+# RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+RUN pip install torch==1.13.0+cu117 torchvision==0.14.0+cu117 torchaudio==0.13.0 --extra-index-url https://download.pytorch.org/whl/cu117
