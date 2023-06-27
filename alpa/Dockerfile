@@ -10,7 +10,6 @@ RUN apt-get install -y \
     iproute2
 
 RUN apt-get install -y \
-    libnvidia-compute-470 \
     libbsd0 \
     libcap2 \
     libelf1 \
@@ -31,7 +30,6 @@ RUN cd /tmp/nvidia-peer-memory-1.3 && \
     dpkg-buildpackage -us -uc
 RUN cd /tmp && \
     dpkg -i nvidia-peer-memory_1.2-0_all.deb
-    # dpkg -i nvidia-peer-memory-dkms_1.2-0_all.deb
 
 RUN ln -s /usr/bin/python3 /usr/bin/python && \
     ln -s /usr/bin/pip3 /usr/bin/pip
