@@ -1,7 +1,7 @@
 #!/usr/bin/env -S sh -c 'docker build --rm -t kungfu.azurecr.io/mw-pytorch2:latest -f $0 .'
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 
-ARG MLNX_OFED=MLNX_OFED_LINUX-5.4-3.7.5.0-ubuntu22.04-x86_64
+ARG MLNX_OFED=MLNX_OFED_LINUX-23.07-0.5.0.0-ubuntu22.04-x86_64
 
 WORKDIR /workspace
 
@@ -20,7 +20,7 @@ RUN apt-get update && \
     # Clean
     apt-get clean
 
-RUN wget https://content.mellanox.com/ofed/MLNX_OFED-5.4-3.7.5.0/${MLNX_OFED}.tgz && \
+RUN wget https://content.mellanox.com/ofed/MLNX_OFED-23.07-0.5.0.0/${MLNX_OFED}.tgz && \
     tar xzf ${MLNX_OFED}.tgz && \
     cd ${MLNX_OFED} && \
     ./mlnxofedinstall --user-space-only --without-fw-update --force && \
