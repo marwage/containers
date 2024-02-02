@@ -39,4 +39,4 @@ RUN git clone https://github.com/Mellanox/nv_peer_memory.git && \
     dpkg -i /tmp/nvidia-peer-memory_1.2-0_all.deb && \
     rm -r /tmp/*
 
-RUN pip install --no-cache-dir torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
+RUN pip install --no-cache-dir torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu118
